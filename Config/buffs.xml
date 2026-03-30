@@ -1,0 +1,20 @@
+<FiniteHordes>
+
+    <!-- Blood moon zombie counter buff -->
+    <!-- Applied by C# patch on InitParty -->
+    <!-- Removed by C# patch on EndBloodMoon -->
+    <append xpath="buffs">
+        <buff name="buffFiniteHordesCounter"
+              name_key="buffFiniteHordesCounterName"
+              description_key="buffFiniteHordesCounterDesc"
+              icon="ui_game_symbol_zombie"
+              icon_color="255,50,50"
+              stack_type="ignore">
+
+            <!-- Display the live zombie count on the buff icon -->
+            <display_value value="$BloodMoonZombies"/>
+
+        </buff>
+    </append>
+
+</FiniteHordes>

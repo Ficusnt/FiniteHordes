@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xml>
+  <Name value="FiniteHordes" />
+  <DisplayName value="Finite Hordes" />
+  <Version value="1.0.0" />
+  <Description value="Caps blood moon horde zombie counts and scales spawns via config. Unofficial Port of 0xSteel-HardcoreHordes for 7D2D 2.5." />
+  <Author value="Ficus" />
+  <Website value="" />
+</xml>
