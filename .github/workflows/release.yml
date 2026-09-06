@@ -1,0 +1,44 @@
+name: Build & Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Extract mod info
+        id: modinfo
+        run: |
+          MODNAME=$(grep -oP '(?<=<Name value=")[^"]+' ModInfo.xml | head -1)
+          VERSION=$(printf '%s' "${GITHUB_REF_NAME}" | sed 's/^v//')
+          echo "modname=${MODNAME}" >> "$GITHUB_OUTPUT"
+          echo "version=${VERSION}" >> "$GITHUB_OUTPUT"
+
+      - name: Stage mod folder
+        run: |
+          MOD="dist/${{ steps.modinfo.outputs.modname }}"
+          mkdir -p "$MOD"
+          rsync -a --exclude='.git/' --exclude='.gitignore' --exclude='.github/' \
+                --exclude='build.ps1' --exclude='Source/' --exclude='dll/' \
+                --exclude='dist/' --exclude='*.suo' --exclude='*.zip' \
+                "./" "$MOD/"
+
+      - name: Create zip
+        run: |
+          cd dist
+          zip -qr "../${{ steps.modinfo.outputs.modname }}-v${{ steps.modinfo.outputs.version }}.zip" ./*/
+
+      - name: Publish release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: "${{ steps.modinfo.outputs.modname }}-v${{ steps.modinfo.outputs.version }}.zip"
+          generate_release_notes: true
