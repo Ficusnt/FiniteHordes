@@ -1,3 +1,13 @@
-# FiniteHordes
+# Finite Hordes
 
-A small mod that changes how hordes behave during bloodmoons. It turns them from time based (2200-400) to kill based (kill a set amount of zombies to win) and forces the kill rule by making sure the bm NEVER STOPS until all threats have been taken care of.
+A 7 Days to Die mod that caps blood moon horde zombie counts and scales spawns
+via config. Unofficial port of 0xSteel-HardcoreHordes for 7D2D 2.5.
+
+## Notes
+
+- Edit `Config/` to tune horde caps and spawn scaling; no recompile needed.
+- Built for 7 Days to Die 2.5.
+
+## License
+
+MIT - see `LICENSE.md`.

@@ -1,0 +1,10 @@
+# Build output - never commit
+Source/bin/
+Source/obj/
+bin/
+obj/
+
+# IDE / user cruft
+.vs/
+*.user
+*.suo
